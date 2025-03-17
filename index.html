@@ -1,0 +1,975 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תרגול למבחן בתנ"ך - סיפורי אבות</title>
+    <!-- Add Font Awesome for icons -->
+    <link rel="icon" type="image/x-icon" href="./images/tic.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap');
+
+        :root {
+            --primary-color: #835c3b;
+            --primary-light: #d7c9b8;
+            --secondary-color: #5b8c5a;
+            --accent-color: #e6c068;
+            --dark-color: #2a2118;
+            --light-color: #f8f5e9;
+            --success-color: #5a9663;
+            --gradient-bg: linear-gradient(135deg, #f8f5e9 0%, #e8dac5 100%);
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.05);
+            --hover-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Heebo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: var(--gradient-bg);
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: right;
+            color: var(--dark-color);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+            .container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--secondary-color));
+                z-index: 2;
+            }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+
+        .title-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        .question-container {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: var(--light-color);
+            border-radius: 12px;
+            border-right: 5px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .question {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            position: relative;
+            z-index: 1;
+        }
+
+        .question-number {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+
+            .question-number::before {
+                content: "\f5dc";
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                margin-left: 8px;
+                color: var(--accent-color);
+            }
+
+        .answer-container {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid var(--primary-light);
+            border-radius: 10px;
+            resize: vertical;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            font-family: 'Heebo', sans-serif;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+            textarea:focus {
+                border-color: var(--accent-color);
+                box-shadow: 0 0 0 3px rgba(230, 192, 104, 0.25);
+                outline: none;
+            }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+            button:hover {
+                background-color: #6e4e32;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            }
+
+            button:active {
+                transform: translateY(1px);
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            button i {
+                margin-left: 8px;
+            }
+
+        .result-container {
+            margin-top: 30px;
+            padding: 0;
+            border-radius: 12px;
+            display: none;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            background-color: white;
+            position: relative;
+        }
+
+        .result-header {
+            background: linear-gradient(135deg, var(--primary-color), #96785c);
+            color: white;
+            padding: 15px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+        }
+
+        .result-content {
+            padding: 20px;
+        }
+
+        .correct-answer {
+            background-color: rgba(90, 150, 99, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-right: 5px solid var(--success-color);
+            position: relative;
+        }
+
+            .correct-answer::before {
+                content: "\f00c";
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                position: absolute;
+                right: -15px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--success-color);
+                background-color: white;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+            }
+
+        .score {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--primary-color);
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: rgba(230, 192, 104, 0.1);
+            border-radius: 8px;
+            border-right: 3px solid var(--accent-color);
+        }
+
+            .feedback::before {
+                content: "\f0eb";
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
+                margin-left: 10px;
+                color: var(--accent-color);
+            }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e9e1d4;
+            border-radius: 10px;
+            margin: 15px 0;
+            height: 15px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--success-color), #7ac07a);
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .progress-bar::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+                animation: shimmer 2s infinite;
+            }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--dark-color);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+            .loading.active {
+                display: flex;
+            }
+
+            .loading i {
+                margin-left: 10px;
+                animation: spin 1s infinite linear;
+            }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .nav-button {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 20px;
+        }
+
+            .nav-button:hover {
+                background-color: var(--primary-color);
+                color: white;
+            }
+
+        /* Confetti animation for good scores */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            animation: fall linear;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Notification styles */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 9999;
+            font-size: 1rem;
+            max-width: 80%;
+        }
+
+            .notification i {
+                margin-left: 10px;
+                font-size: 1.2rem;
+            }
+
+        .notification-info {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            border-right: 4px solid #2196f3;
+        }
+
+        .notification-warning {
+            background-color: #fff8e1;
+            color: #ff8f00;
+            border-right: 4px solid #ffc107;
+        }
+
+        .notification-error {
+            background-color: #ffebee;
+            color: #c62828;
+            border-right: 4px solid #f44336;
+        }
+
+        .notification-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-right: 4px solid #4caf50;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .question {
+                font-size: 1.1rem;
+            }
+        }
+
+        .title-icon {
+            height: 2.7rem; /* Match the font-size of h1 */
+            width: auto; /* Maintain aspect ratio */
+            object-fit: contain;
+            vertical-align: middle; /* Align vertically with text */
+            margin: 0 10px; /* Add some spacing */
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti container for celebrations -->
+    <div class="confetti-container" id="confetti-container"></div>
+
+    <div class="container">
+        <h1>
+            <img src="images/person.png" alt="Icon" class="title-icon">
+            <span>תרגול למבחן בתנ"ך - סיפורי אבות</span>
+            <img src="images/person.png" alt="Icon" class="title-icon">
+        </h1>
+        <div class="question-container">
+            <div class="question-number">שאלה&nbsp;<span id="current-question">1</span>&nbsp;מתוך&nbsp;<span id="total-questions">10</span></div>
+            <div class="question" id="question-text">מדוע ה' מבקש מאברם לעזוב את ארצו, מולדתו ובית אביו, ומה היה סדר בקשה זו?</div>
+        </div>
+
+        <div class="answer-container">
+            <textarea id="user-answer" placeholder="הקלד/י את תשובתך כאן..."></textarea>
+            <button id="check-answer"><i class="fas fa-check-circle"></i> בדוק תשובה</button>
+            <button id="show_answer"><i class="fas fa-eye"></i> הראה תשובה</button>
+
+        </div>
+        <div id="answer_place">
+
+        </div>
+
+        <div id="loading-indicator" class="loading">
+            <i class="fas fa-scroll fa-spin"></i> בודק את תשובתך...
+        </div>
+
+        <div class="result-container" id="result-container">
+            <div class="result-header">
+                <h3><i class="fas fa-award"></i> תוצאת התשובה</h3>
+            </div>
+            <div class="result-content">
+                <div class="score">הציון שלך: <span id="score-value">85</span>%</div>
+
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar" style="width: 85%;"></div>
+                </div>
+
+                <div class="feedback" id="feedback-text">
+                    תשובה טובה! יש כמה פרטים קטנים שחסרים.
+                </div>
+
+                <div class="correct-answer">
+                    <strong>התשובה הנכונה:</strong>
+                    <div id="correct-answer-text"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="prev-question" class="nav-button hidden"><i class="fas fa-arrow-right"></i> שאלה קודמת</button>
+            <button id="next-question" class="nav-button hidden">שאלה הבאה <i class="fas fa-arrow-left"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // Questions with pre-defined correct answers
+        const questions = [
+            {
+                question: "מדוע ה' מבקש מאברם לעזוב את ארצו, מולדתו ובית אביו, ומה היה סדר בקשה זו?",
+                correctAnswer: "ה' מצווה על אברם ללכת מארצו, ממולדתו ומבית אביו לארץ שאינה ידועה לו. הפסוק בנוי בהדרגתיות בסדר יורד. ה' מצווה עליו לעזוב את היכן שהוא נולד (אַרְצְךָ), את המקום אליו מרגיש קרבה ושייכות (מּוֹלַדְתְּךָ) ואת משפחתו (בֵּית אָבִיךָ). תמורת זאת, ה' מבטיח לאברם שבעה ברכות, כולל שיהפוך לעם גדול, שיתברך ויהפוך למפורסם."
+            },
+            {
+                question: "אילו קשיים עמדו בפני אברם כאשר עזב את מולדתו? ציין לפחות שלושה קשיים.",
+                correctAnswer: "אברם בפרק עומד בפני כמה קשיים בעת עזיבת מולדתו: אי-וודאות (ה' לא מספר לאברם לאן הוא הולך), עזיבה של הכל מאחוריו, והגיל שלו (75 שנים)."
+            },
+            {
+                question: "מהן הדעות השונות לגבי פירוש הפסוק 'וְהֶאֱמִן בַּיהוָה וַיַּחְשְׁבֶהָ לּוֹ צְדָקָה'? הסבר את שתי האפשרויות.",
+                correctAnswer: "פסוק זה שנוי במחלוקת מבחינה למי תחשב הצדקה. אפשרות אחת היא שהצדקה תחשב לה' על כך שאברם מאמין בו, ואפשרות שנייה היא שהצדקה תחשב לאברם שיזכה בצדק על כך שהוא מאמין בה'."
+            },
+            {
+                question: "הסבר את המונח 'מעשה אבות סימן לבנים' בהקשר של ירידת אברם למצרים. ציין שלוש דוגמאות מהטקסט.",
+                correctAnswer: "המונח 'מעשה אבות סימן לבנים' מתייחס לכך שמה שקרה לאבות האומה מהווה תבנית למה שיקרה לצאצאיהם בעתיד. בהקשר של ירידת אברם למצרים, יש שלוש דוגמאות: גירוש אברם = גירוש בני ישראל ממצרים, אברם יורד למצרים בעקבות רעב = יעקב יורד למצרים בעקבות רעב, נגעים בפרעה = מכות מצרים."
+            },
+            {
+                question: "מה היה טקס 'ברית בין הבתרים' ומה הייתה מטרתו? תאר את שלבי הטקס.",
+                correctAnswer: "טקס 'ברית בין הבתרים' היה אירוע שבו ה' כרת ברית עם אברם. בטקס, ה' אמר לאברם לקחת עגלה משולשת, עז משולשת, איל משולש, תור וגוזל. אברם חצה את שלושת החיות (הניח את החצאים זה מול זה עם מרווח באמצע) ואת שתי הציפורים לא חצה. את הפגרים תקף עיט (סמל לאויבים) ואברם הבריח אותם. ה' עבר בין הבתרים (החיות החצויות) בדמות תנור עשן ולפיד אש, וכך התחייב לברית. מטרת הטקס הייתה להבטיח לאברם את הארץ ואת העתיד של צאצאיו."
+            },
+            {
+                question: "אילו הבטחות הבטיח ה' לאברם בברית בין הבתרים? ציין לפחות ארבע.",
+                correctAnswer: "בברית בין הבתרים ה' הבטיח לאברם: שצאצאי אברם יקבלו את הארץ עוד 400 שנה (אך בזמן הזה יהיו משועבדים); שה' יעניש את העם שישעבד אותם; שדור רביעי ישוב לארץ עם רכוש גדול; שאברם ימות בשיבה טובה; את גבולות הארץ שתהיה להם (מנהר הפרת עד נהר מצרים); ושהאמורי (שם כללי לעמי כנען) יחטא מספיק כדי שיגורש."
+            },
+            {
+                question: "כיצד ניסתה שרי להתמודד עם עקרותה? האם הייתה זו תופעה חריגה בתקופה זו? הסבר.",
+                correctAnswer: "לאחר 10 שנים ללא ילד, שרי הציעה לאברם לקחת את שפחתה, הגר, לו לאישה. שרי חשבה שאולי סיימה את תקופת פריונה והיא קיוותה שאולי המעשה יגרום אף לה ללדת ('אוּלַי אִבָּנֶה מִמֶּנָּה'). הבן שייוולד ייחשב לבנה החוקי של שרי. זו לא הייתה תופעה חריגה בתקופה זו, שכן מתעודות שנמצאו בעיר נוזי (עיר במזרח הקדום), נמצא כי היה נהוג לקחת שפחה ולהרות 'דרכה'."
+            },
+            {
+                question: "מדוע הגר ברחה מבית אברם ושרי, ומה אמר לה מלאך ה' כאשר פגש אותה?",
+                correctAnswer: "הגר ברחה כי לאחר שנכנסה להריון, היא התחילה לזלזל בשרי, דבר שמאוד הרגיז את שרי. שרי האשימה את אברם, שהגיב באופן פסיבי ואמר לה לעשות להגר כטוב בעיניה. שרי עינתה את הגר, וכתוצאה מכך הגר ברחה למדבר. כשמלאך ה' פגש אותה, הוא זיהה אותה ושאל אותה מאין באה ולאן היא הולכת. המלאך אמר לה לחזור ולהתענות תחת שרי והבטיח לה שלוש בשורות."
+            },
+            {
+                question: "מה היו שלוש הבשורות שהמלאך בישר להגר, ומה הייתה תגובתה?",
+                correctAnswer: "שלוש הבשורות שהמלאך בישר להגר היו: 1) שעליה לחזור לשרי ולהתענות; 2) שמהזרע שלה יצא עם גדול; 3) שהיא בהריון עם בן, ששמו יהיה ישמעאל (כי שמע האל את סבלה), ושהוא יהיה 'פרא אדם' שידו בכל ויד כל בו, וישכון על פני כל אחיו. תגובתה של הגר הייתה לתת שם למקום/לבאר שבו התגלה אליה המלאך (באר לחי ראי), וחזרה לבית אברם."
+            },
+            {
+                question: "איזו משמעות כפולה יכולה להיות למילים 'פרא אדם' בהקשר של ישמעאל? הסבר את שתי האפשרויות.",
+                correctAnswer: "המילים 'פרא אדם' בהקשר של ישמעאל יכולות להתפרש בשתי דרכים: 1) כמו חמור בר חופשי נטול גבולות - פירוש חיובי המדגיש את החופש והעצמאות; 2) פרוע וחסר שליטה - פירוש שלילי. באופן דומה, 'ידו בכל ויד כל בו' יכול להתפרש כאדם רב כישורים שיודע לעשות הכל, או כאדם שמעורב בקטטות ובדברים לא טובים."
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        // DOM elements
+        const questionText = document.getElementById('question-text');
+        const userAnswer = document.getElementById('user-answer');
+        const checkAnswerButton = document.getElementById('check-answer');
+        const resultContainer = document.getElementById('result-container');
+        const scoreValue = document.getElementById('score-value');
+        const progressBar = document.getElementById('progress-bar');
+        const feedbackText = document.getElementById('feedback-text');
+        const correctAnswerText = document.getElementById('correct-answer-text');
+        const nextButton = document.getElementById('next-question');
+        const prevButton = document.getElementById('prev-question');
+        const loadingIndicator = document.getElementById('loading-indicator');
+        const currentQuestionSpan = document.getElementById('current-question');
+        const totalQuestionsSpan = document.getElementById('total-questions');
+        const confettiContainer = document.getElementById('confetti-container');
+
+        // Set total questions
+        totalQuestionsSpan.textContent = questions.length;
+
+        // Display first question
+        displayQuestion(currentQuestionIndex);
+
+        // Event listeners
+        checkAnswerButton.addEventListener('click', checkAnswer);
+        nextButton.addEventListener('click', nextQuestion);
+        prevButton.addEventListener('click', prevQuestion);
+        userAnswer.addEventListener('keydown', handleKeyDown);
+
+        // Add a listener for the Enter key
+        function handleKeyDown(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                checkAnswer();
+            }
+        }
+
+        function displayQuestion(index) {
+            questionText.textContent = questions[index].question;
+            currentQuestionSpan.textContent = index + 1;
+            userAnswer.value = '';
+            resultContainer.style.display = 'none';
+
+            // Show/hide prev/next buttons as appropriate
+            prevButton.classList.toggle('hidden', index === 0);
+            nextButton.classList.toggle('hidden', index === questions.length - 1);
+
+            // Reset UI
+            userAnswer.disabled = false;
+            checkAnswerButton.disabled = false;
+
+            // Focus the textarea for immediate typing
+            userAnswer.focus();
+        }
+
+        async function checkAnswer() {
+            document.getElementById('answer_place').style.display = 'none';
+
+            const answer = userAnswer.value.trim();
+            if (!answer) {
+                showNotification('אנא הכנס/י תשובה לפני הבדיקה', 'warning');
+                userAnswer.focus();
+                return;
+            }
+
+            // Get the current question and correct answer
+            const currentQuestion = questions[currentQuestionIndex];
+            const correctAnswer = currentQuestion.correctAnswer;
+
+            // Show loading with animation
+            loadingIndicator.classList.add('active');
+            checkAnswerButton.disabled = true;
+            userAnswer.disabled = true;
+
+            try {
+                // Send to Gemini API for evaluation
+                const result = await checkWithGemini(answer, correctAnswer);
+
+                // Hide loading
+                loadingIndicator.classList.remove('active');
+
+                // Show results
+                displayResults(result.score, correctAnswer, result.feedback);
+
+                // Show next/prev buttons
+                nextButton.classList.remove('hidden');
+                prevButton.classList.remove('hidden');
+                prevButton.classList.toggle('hidden', currentQuestionIndex === 0);
+
+                // Celebrate high scores!
+                if (result.score >= 90) {
+                    createConfetti();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                loadingIndicator.classList.remove('active');
+                showNotification('שגיאה בבדיקת התשובה. אנא נסה שוב מאוחר יותר.', 'error');
+                checkAnswerButton.disabled = false;
+                userAnswer.disabled = false;
+            }
+        }
+
+        function displayResults(score, correctAnswer, feedback) {
+            // Update content
+            scoreValue.textContent = score;
+            progressBar.style.width = '0%'; // Start at 0 for animation
+            correctAnswerText.textContent = correctAnswer;
+            feedbackText.textContent = feedback;
+
+            // Show the container
+            resultContainer.style.display = 'block';
+
+            // Animate the progress bar
+            setTimeout(() => {
+                progressBar.style.width = `${score}%`;
+            }, 100);
+
+            // Add a relevant icon based on score
+            updateScoreIcon(score);
+        }
+
+        function updateScoreIcon(score) {
+            const scoreElement = document.querySelector('.score');
+            // Remove any existing icons
+            const existingIcon = scoreElement.querySelector('i');
+            if (existingIcon) {
+                existingIcon.remove();
+            }
+
+            // Add appropriate icon
+            let icon = document.createElement('i');
+            icon.classList.add('fas', 'fa-fw');
+
+            if (score >= 90) {
+                icon.classList.add('fa-crown');
+                icon.style.color = '#FFD700';
+            } else if (score >= 75) {
+                icon.classList.add('fa-star');
+                icon.style.color = '#FFA500';
+            } else if (score >= 60) {
+                icon.classList.add('fa-thumbs-up');
+                icon.style.color = '#4CAF50';
+            } else if (score >= 40) {
+                icon.classList.add('fa-hand-point-right');
+                icon.style.color = '#FFC107';
+            } else {
+                icon.classList.add('fa-book');
+                icon.style.color = '#F44336';
+            }
+
+            // Add icon to score
+            scoreElement.prepend(icon);
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion(currentQuestionIndex);
+
+                // Scroll to top of container
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion(currentQuestionIndex);
+
+                // Scroll to top of container
+                document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Notification system
+        function showNotification(message, type = 'info') {
+            // Remove any existing notifications
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+
+            // Set icon based on type
+            let icon = 'info-circle';
+            if (type === 'warning') icon = 'exclamation-triangle';
+            if (type === 'error') icon = 'times-circle';
+            if (type === 'success') icon = 'check-circle';
+
+            notification.innerHTML = `
+                    <i class="fas fa-${icon}"></i>
+                    <span>${message}</span>
+                `;
+
+            // Add to body
+            document.body.appendChild(notification);
+
+            // Auto remove after 3 seconds
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Create confetti for celebration
+        function createConfetti() {
+            confettiContainer.style.display = 'block';
+            confettiContainer.innerHTML = '';
+
+            const colors = ['#FFD700', '#5a9663', '#e6c068', '#835c3b', '#5b8c5a'];
+
+            // Create 100 confetti pieces
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+
+                // Random properties
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                const left = Math.random() * 100;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 2;
+
+                // Apply styles
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.left = `${left}%`;
+                confetti.style.animationDuration = `${duration}s`;
+                confetti.style.animationDelay = `${delay}s`;
+
+                // Add shapes variety
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                } else if (Math.random() > 0.5) {
+                    confetti.style.transform = 'rotate(45deg)';
+                }
+
+                confettiContainer.appendChild(confetti);
+            }
+
+            // Remove confetti after 5 seconds
+            setTimeout(() => {
+                confettiContainer.style.display = 'none';
+            }, 5000);
+        }
+        function displayQuestion(index) {
+            questionText.textContent = questions[index].question;
+            currentQuestionSpan.textContent = index + 1;
+            userAnswer.value = '';
+            resultContainer.style.display = 'none';
+
+            // Reset the answer place
+            document.getElementById('answer_place').style.display = 'none';
+            document.getElementById('show_answer').style.display = 'inline-block';
+
+            // Show/hide prev/next buttons as appropriate
+            prevButton.classList.toggle('hidden', index === 0);
+            nextButton.classList.toggle('hidden', index === questions.length - 1);
+
+            // Reset UI
+            userAnswer.disabled = false;
+            checkAnswerButton.disabled = false;
+
+            // Focus the textarea for immediate typing
+            userAnswer.focus();
+        }
+        // Add this event listener with the rest of your event listeners
+        document.getElementById('show_answer').addEventListener('click', showAnswer);
+
+        // Add this function to your JavaScript
+        function showAnswer() {
+            // Get the current question's correct answer
+            const currentQuestion = questions[currentQuestionIndex];
+            const correctAnswer = currentQuestion.correctAnswer;
+
+            // Display the answer in the answer_place div
+            const answerPlace = document.getElementById('answer_place');
+            answerPlace.innerHTML = `
+        <div class="correct-answer" style="margin-bottom: 20px;">
+            <strong>התשובה המלאה:</strong>
+            <div>${correctAnswer}</div>
+        </div>
+    `;
+
+            // Show the answer place
+            answerPlace.style.display = 'block';
+        }
+        // Real implementation with Gemini API
+        async function checkWithGemini(userAnswer, correctAnswer) {
+            document.getElementById('show_answer').style.display = 'none';
+
+            // Replace YOUR_API_KEY with your actual Gemini API key
+            const API_KEY = 'AIzaSyBw5wOx3ikKsNV1Qi_9DLI0Q-bz-CqIHes';
+
+            // Updated API URL to the correct endpoint
+            const API_URL = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-pro:generateContent';
+
+            const prompt = `
+                    אתה מורה לתנ"ך שצריך להעריך את התשובה של תלמיד בהשוואה לתשובה נכונה.
+
+                    שאלה: ${questions[currentQuestionIndex].question}
+
+                    תשובת התלמיד:
+                    "${userAnswer}"
+
+                    התשובה הנכונה:
+                    "${correctAnswer}"
+
+                    1. הערך באחוזים (בין 0 ל-100) עד כמה התשובה של התלמיד נכונה בהשוואה לתשובה הנכונה.
+                    2. תן משוב מפורט לתלמיד על תשובתו - מה היה טוב, מה היה חסר, ומה היה לא מדויק.
+
+                    התגובה שלך צריכה להיות בפורמט הבא בדיוק:
+                    {
+                      "score": [ציון מספרי בין 0 ל-100],
+                      "feedback": "[משוב מילולי לתלמיד]"
+                    }
+                    `;
+
+            try {
+                // Send request to Gemini API with proper error handling
+                console.log("Sending request to Gemini API...");
+
+                const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [
+                            {
+                                parts: [
+                                    {
+                                        text: prompt
+                                    }
+                                ]
+                            }
+                        ]
+                    })
+                });
+
+                console.log("API response status:", response.status);
+
+                if (!response.ok) {
+                    // Add better error handling with response details
+                    const errorText = await response.text();
+                    console.error("API Error details:", errorText);
+                    throw new Error(`API request failed with status ${response.status}: ${errorText}`);
+                }
+
+                const data = await response.json();
+                console.log("Received data from API");
+
+                // In case the API response format changes, log it for debugging
+                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+                    console.error("Unexpected API response format:", JSON.stringify(data));
+                    throw new Error("Unexpected API response format");
+                }
+
+                const resultText = data.candidates[0].content.parts[0].text;
+
+                // Parse the JSON response from Gemini
+                try {
+                    const resultJson = JSON.parse(resultText);
+                    return {
+                        score: resultJson.score,
+                        feedback: resultJson.feedback
+                    };
+                } catch (parseError) {
+                    console.error('Error parsing Gemini response:', parseError);
+                    console.log("Raw response from Gemini:", resultText);
+
+                    // Fallback extraction if JSON parsing fails
+                    const scoreMatch = resultText.match(/"score":\s*(\d+)/);
+                    const feedbackMatch = resultText.match(/"feedback":\s*"([^"]*)"/);
+
+                    return {
+                        score: scoreMatch ? parseInt(scoreMatch[1]) : 50,
+                        feedback: feedbackMatch ? feedbackMatch[1] : 'לא ניתן לחלץ משוב מהתגובה של Gemini.'
+                    };
+                }
+            } catch (error) {
+                console.error('Error with Gemini API:', error);
+
+                // Fallback to simple scoring if API fails
+                if (userAnswer.length < 10) {
+                    return {
+                        score: 30,
+                        feedback: 'התשובה קצרה מדי. אנא הרחב את תשובתך.'
+                    };
+                }
+
+                // Very simple fallback scoring
+                const userWords = new Set(userAnswer.toLowerCase().match(/\b(\w+)\b/g) || []);
+                const correctWords = new Set(correctAnswer.toLowerCase().match(/\b(\w+)\b/g) || []);
+
+                let matchedWords = 0;
+                correctWords.forEach(word => {
+                    if (userWords.has(word)) matchedWords++;
+                });
+
+                const matchRatio = correctWords.size > 0 ? matchedWords / correctWords.size : 0;
+                const score = Math.min(Math.round(matchRatio * 100), 100);
+
+                return {
+                    score: score,
+                    feedback: 'לא ניתן לקבל משוב מפורט כרגע. הציון מבוסס על התאמה בסיסית למילות מפתח.'
+                };
+            }
+        }
+    </script>
+</body>
+</html>
